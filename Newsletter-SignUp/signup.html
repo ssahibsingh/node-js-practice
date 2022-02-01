@@ -17,20 +17,20 @@
 <body class="text-center">
 
     <main class="form-signin">
-        <form>
+        <form action="/" method="post">
             <img class="mb-4" src="images/icon.png" alt="" width="72" height="72">
             <h1 class="my-4 h3 mb-3 fw-normal">Sign Up to My Newsletter</h1>
 
             <div class="form-floating top">
-                <input type="text" class="form-control" id="firstName" placeholder="." required autofocus>
+                <input type="text" class="form-control" id="firstName" name = "fname" placeholder="." required autofocus>
                 <label for="firstName">First Name</label>
             </div>
             <div class="form-floating">
-                <input type="text" class="form-control" id="secondName" placeholder="." required>
+                <input type="text" class="form-control" id="secondName" name = "lname" placeholder="." required>
                 <label for="secondName">Second Name</label>
             </div>
             <div class="form-floating bottom">
-                <input type="email" class="form-control" id="email" placeholder="." required>
+                <input type="email" class="form-control" id="email" name = "email" placeholder="." required>
                 <label for="email">Email</label>
             </div>
             <button class="my-4 w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
