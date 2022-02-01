@@ -1,7 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const request = require('request');
-const https = require('https')
+const mailchimp = require("@mailchimp/mailchimp_marketing");
+const { response } = require('express');
+
+mailchimp.setConfig({
+    apiKey: "510c16d0cf40b5008b3820f1b0c85421-us14",
+    server: "us14",
+});
 
 const app = express();
 
@@ -18,7 +23,8 @@ app.post('/', (req, res) => {
     const lname = req.body.lname;
     const email = req.body.email;
 
-    const data = {
+    const listId = "245e9c2e36";
+    const subscribeData = {
         members: [
             {
                 email_address: email,
@@ -30,24 +36,21 @@ app.post('/', (req, res) => {
             }
         ]
     }
+    const subscribe = async () => {
+        const response = await mailchimp.lists.batchListMembers(listId, subscribeData);
+        if(response.error_count == 0){
+            res.sendFile(__dirname + "/success.html");
+        }
+        else{
+            res.sendFile(__dirname + "/failure.html");
+        }
+    };
+    subscribe();
+})
 
-    const jsonData = JSON.stringify(data);
 
-    const url = "https://us14.api.mailchimp.com/3.0/list/245e9c2e36"
-
-    const options = {
-        method: "POST",
-        auth: "snone181:e7ca67b873d0c66d98666c52e8b3adbb-us14"
-    }
-
-    const request = https.request(url, options, (response) => {
-        response.on("data", (data) => {
-            console.log(JSON.parse(data));
-        })
-    })
-
-    request.write(jsonData);
-    request.end();
+app.post('/failure', (req, res)=>{
+    res.redirect('/');
 })
 
 app.listen(3000, () => {
@@ -56,7 +59,7 @@ app.listen(3000, () => {
 
 
 // API Key
-// e7ca67b873d0c66d98666c52e8b3adbb-us14
+// 510c16d0cf40b5008b3820f1b0c85421-us14
 
 // List ID
 // 245e9c2e36
