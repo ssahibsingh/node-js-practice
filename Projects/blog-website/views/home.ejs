@@ -5,7 +5,7 @@
 
 <% posts.forEach(post => { %>
     <h1><%= post.title %> </h1>
-    <p><%= post.content %><a href="/post/<%= post.title %>"> Read More</a> </p>
+    <p><%= post.content %> ... <a href="/post/<%= post.title %>">Read More</a> </p>
 <% }) %>
 
 <%- include('partials/footer') -%> 

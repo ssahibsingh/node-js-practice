@@ -29,20 +29,37 @@ app.get('/compose', (req, res) => {
     res.render('compose');
 })
 
-app.get('/post/:postTitle', (req, res) => {
-    const requestedTitle = req.params.postTitle;
-    posts.forEach((post)=>{
-        if(post.title._lowercase === requestedTitle._lowercase){
-            res.render('post', {title:post.title, content: post.content})
-        }
-    })
-})
+// app.get('/post/:postTitle', (req, res) => {
+//     const requestedTitle = req.params.postTitle;
+//     posts.forEach((post)=>{
+//         if(post.title._lowercase === requestedTitle._lowercase){
+//             res.render('post', {title:post.title, content: post.content})
+//         }
 
+//         console.log(post.title);
+//     })
+// })
+
+app.get("/posts/:postName", function(req, res){
+    const requestedTitle = _.lowerCase(req.params.postName);
+  
+    posts.forEach(function(post){
+      const storedTitle = _.lowerCase(post.title);
+  
+      if (storedTitle === requestedTitle) {
+        res.render("post", {
+          title: post.title,
+          content: post.content
+        });
+      }
+    });
+  
+  });
 
 app.post('/', (req, res) => {
     const post = {
         title: req.body.postTitle,
-        content: req.body.postContent.substring(0,100)+" ..."
+        content: req.body.postContent.substring(0,100)
     }
     posts.push(post);
     res.redirect('/');
