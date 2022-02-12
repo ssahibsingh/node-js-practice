@@ -16,11 +16,11 @@
         <%for(var i = 0; i < newItemList.length; i++){%>
             <div class="item">
                 <input type="checkbox">
-                <p><%= newItemList[i] %></>
+                <p><%= newItemList[i] %></p>
             </div>
         <%}%>
         <form class ="item" action="/" method ="POST">
-            <input type="text" name="newItem" placeholder ="New Item" autocomplete="off" autofocus="true">
+            <input type="text" name="newItem" placeholder ="New Item" autocomplete="off" autofocus="true" required>
             <button type="submit" name="button">+</button>
         </form>
     </div>

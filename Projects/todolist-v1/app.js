@@ -6,6 +6,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 var items = ["Cake", "Bun", "Coffee"];
+
+
 app.get('/', (req, res) => {
     var today = new Date();
     var options = { weekday: "long", day: "numeric", month: "long" }
