@@ -3,6 +3,40 @@ html {
   position: relative;
 }
 
+.fa-github{
+  font-size: 25px;
+  color: black;
+}
+
+.fa-linkedin{
+  font-size: 25px;
+  color: #026EAA;
+}
+
+.title{
+  text-decoration: none;
+}
+.title:hover{
+  text-decoration: none;
+}
+
+.deletePostList{
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.post-delete{
+  display:flex;
+  align-items: center;
+}
+
+.post-delete-button{
+  border:none;
+  background-color: transparent;
+  color: rgb(20, 20, 20);
+  font-size: 25px;
+  margin-left: 15px;
+}
 .container-fluid {
     padding-top: 70px;
     padding-bottom: 70px;

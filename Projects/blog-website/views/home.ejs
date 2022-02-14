@@ -8,11 +8,13 @@
 
     <h1><%=post.title%></h1>
     <p>
+    <% if (post.content.length <= 100) { %>
+      <%=post.content + "  "%>
+    <% } else {%>
     <%=post.content.substring(0, 100) + " ..."%>
-    <a href="/posts/<%=post.title%>">Read More</a>
+    <% } %>
+    <a href="/posts/<%=post._id%>">Read More</a>
     </p>
-
-
     <% }) %>
 
 
