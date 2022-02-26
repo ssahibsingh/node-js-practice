@@ -22,8 +22,6 @@ const fruit = new Fruit({
   review: "Great Fruit"
 })
 
-// fruit.save();
-
 const peopleSchema = mongoose.Schema({
   name: String,
   age: Number,
@@ -76,9 +74,7 @@ Fruit.find((err, result) => {
   if (err) {
     console.log(err);
   } else {
-    // console.log(result);
-    // mongoose.connection.close();
-    
+       
     result.forEach(fruit => {
       console.log(fruit.name);
     });
